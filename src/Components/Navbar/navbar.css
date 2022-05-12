@@ -1,0 +1,13 @@
+li {
+    padding-left: 25%;
+    padding-right: 25%;
+    font-size: 1.15rem;
+    font-weight: dark;
+    text-shadow: 0.2rem 0.2rem 0.1rem olive;
+}
+
+a {
+    font-size: 1.15rem;
+    font-weight: dark;
+    text-shadow: 0.2rem 0.2rem 0.1rem olive;
+}
