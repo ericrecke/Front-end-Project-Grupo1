@@ -15,6 +15,8 @@ export const languages = {
       HEADING_LOGIN: "Login",
       INPUT_PLACEHOLDER_EMAIL: "Write Your Email Here",
       INPUT_PLACEHOLDER_PASS: "Write Your Password",
+      ARE_YOU_REGISTER: "Have you an account?",
+      SIGN_IN: "Sign in",
     },
 
     REGISTER: {
@@ -22,11 +24,15 @@ export const languages = {
       INPUT_PLACEHOLDER_NAME: "Write Your Name Here",
       INPUT_PLACEHOLDER_EMAIL: "Write Your Email Here",
       INPUT_PLACEHOLDER_PASS: "Write Your Password",
+      ARENT_YOU_REGISTER: "Are you registered?",
+      CREATE_ACCOUNT: "Create account",
+      SIGN_UP: "Sign up",
     },
 
     FORGOT_PASSWORD: {
       HEADING_FORGOT_PASSWORD: "Forgot Password",
       INPUT_PLACEHOLDER_EMAIL: "Write Your Email Here",
+      RECOVERY_PASSWORD: "Recovery password",
     },
 
     NAVBAR: {
@@ -56,20 +62,26 @@ export const languages = {
   es: {
     LOGIN: {
       HEADING_LOGIN: "Login",
-      INPUT_PLACEHOLDER_EMAIL: "Ecribe tu Email aqui",
+      INPUT_PLACEHOLDER_EMAIL: "Ecribe tu Email aquí",
       INPUT_PLACEHOLDER_PASS: "Escribe tu contraseña",
+      ARE_YOU_REGISTER: "¿Ya estás registrado?",
+      SIGN_IN: "Ingresar",
     },
 
     REGISTER: {
       HEADING_REGISTER: "Registrarse",
-      INPUT_PLACEHOLDER_NAME: "Ecribe tu Nombre aqui",
-      INPUT_PLACEHOLDER_EMAIL: "Ecribe tu Email aqui",
+      INPUT_PLACEHOLDER_NAME: "Escribe tu Nombre aquí",
+      INPUT_PLACEHOLDER_EMAIL: "Escribe tu Email aquí",
       INPUT_PLACEHOLDER_PASS: "Escribe tu contraseña",
+      ARENT_YOU_REGISTER: "¿No estás registrado?",
+      CREATE_ACCOUNT: "Crear cuenta",
+      SIGN_UP: "Registrarse",
     },
 
     FORGOT_PASSWORD: {
       HEADING_FORGOT_PASSWORD: "Olvidaste tu Contraseña",
-      INPUT_PLACEHOLDER_EMAIL: "Ecribe tu Email aqui",
+      INPUT_PLACEHOLDER_EMAIL: "Escribe tu Email aquí",
+      RECOVERY_PASSWORD: "Recuperar contraseña"
     },
 
     NAVBAR: {
@@ -81,7 +93,7 @@ export const languages = {
 
     CONTACT: {
       HEADING_CONTACT: "Contactanos",
-      INPUT_PLACEHOLDER_EMAIL: "Escribe tu email aqui",
+      INPUT_PLACEHOLDER_EMAIL: "Escribe tu email aquí",
       INPUT_PLACEHOLDER_NAME: "Escribe tu nombre",
       INPUT_PLACEHOLDER_MESSAGE: "Escribe tu mensaje",
     },
