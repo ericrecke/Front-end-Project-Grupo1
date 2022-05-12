@@ -2,6 +2,10 @@ import './ResetPassword.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function ResetPassword() {
+    function handleSubmitResetPassword(){
+        console.log("Presionó recuperar contraseña...")
+    }
+
     return (
       <div className="ResetPassword">
         <div className="container">
@@ -18,13 +22,13 @@ function ResetPassword() {
                         <input type="text" className="form-control" id="Mail" aria-describedby="emailHelp" placeholder="Mail"></input>
                     </div>
                     <div className="text-center">
-                        <button type="submit" className="btn btn-primary px-5 mb-5 w-100">Recuperar</button>
+                        <button onClick={handleSubmitResetPassword()} className="btn btn-primary px-5 mb-5 w-100">Recuperar</button>
                     </div>
-                    <div id="emailRegister" className="form-text text-center text-dark">¿No estás registrado? 
-                        <t> </t><a href="#" className="text-dark fw-bold">Crear cuenta</a>
+                    <div id="emailRegister" className="form-text text-center text-dark">¿No estás registrado?&nbsp; 
+                        <a href="#" className="text-dark fw-bold">Crear cuenta</a>
                     </div>
-                    <div id="emailLogin" className="form-text text-center text-dark">¿Ya estás registrado? 
-                        <t> </t><a href="#" className="text-dark fw-bold">Ingresar</a>
+                    <div id="emailLogin" className="form-text text-center text-dark">¿Ya estás registrado?&nbsp;
+                        <a href="#" className="text-dark fw-bold">Ingresar</a>
                     </div>
                 </form>
                 </div>
