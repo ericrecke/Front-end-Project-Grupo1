@@ -3,8 +3,9 @@ li.nav-item {
     padding-right: 20%;
     font-size: 1.15rem;
     font-weight: dark;
+    font-family: 'Roboto', sans-serif;
     color: #BB9981;
-    text-shadow: 0.2rem 0.2rem 0.1rem #C5D8A4;
+    text-shadow: 0.1rem 0.1rem 0.1rem #C5D8A4;
 }
 
 a {
