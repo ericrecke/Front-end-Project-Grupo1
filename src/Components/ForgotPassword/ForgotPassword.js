@@ -1,16 +1,16 @@
-import './ResetPassword.css';
+import './ForgotPassword.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { languages } from '../../language';
 
 const _language  = languages['es'];
 
-function ResetPassword() {
-    function handleSubmitResetPassword(){
+function ForgotPassword() {
+    function handleSubmitForgotPassword(){
         console.log("Presionó recuperar contraseña...")
     }
 
     return (
-      <div className="ResetPassword">
+      <div className="ForgotPassword">
         <div className="container">
             <div className="row">
             <div className="col-md-6 offset-md-3">
@@ -24,7 +24,7 @@ function ResetPassword() {
                         <input type="text" className="form-control" id="Mail" aria-describedby="emailHelp" placeholder="Mail"></input>
                     </div>
                     <div className="text-center">
-                        <button onClick={handleSubmitResetPassword()} className="btn btn-primary px-5 mb-5 w-100">{_language.FORGOT_PASSWORD.RECOVERY_PASSWORD}</button>
+                        <button onClick={handleSubmitForgotPassword()} className="btn btn-primary px-5 mb-5 w-100">{_language.FORGOT_PASSWORD.RECOVERY_PASSWORD}</button>
                     </div>
                     <div id="emailRegister" className="form-text text-center text-dark">{_language.REGISTER.ARENT_YOU_REGISTER}&nbsp; 
                         <a href="#" className="text-dark fw-bold">{_language.REGISTER.SIGN_UP}</a>
@@ -41,4 +41,4 @@ function ResetPassword() {
     );
   }
   
-  export default ResetPassword;
+  export default ForgotPassword;
