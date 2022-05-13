@@ -9,6 +9,7 @@ import { AiTwotoneMail } from "react-icons/ai";
 
 const Navbar = () => {
     return (
+      // logo
         <nav class="navbar navbar-expand-lg navbar-light bg-success">
         <div class="container-fluid">
           <a class="navbar-brand" href="#"><FaCat class="cat"/></a>
@@ -16,6 +17,7 @@ const Navbar = () => {
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
+             {/* Lista de navegacion   */}
             <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">Mascotas</a>
@@ -30,6 +32,7 @@ const Navbar = () => {
               <a class="nav-link active" aria-current="page" href="#">Contacto</a>
               </li>
             </ul>
+            {/* Redes sociales  */}
             <ul id="redes">
               <li>
               <a class="navbar-brand" href="#"><FaFacebook class="face"/></a>
