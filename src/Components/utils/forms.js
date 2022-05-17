@@ -12,7 +12,6 @@ const useFormInput = (initialValue) => {
     };
 };
 
-
 /*  Your password must contain at least one capital letter, one
     *number and one lowercase letter, and it must contain at least 8
     *characters*/
@@ -28,6 +27,9 @@ const validateForm = (event) => {
     }
 };
 
+/*
+validate email input format
+*/
 const isInvalidEmail = (email) => {
     const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     return !email || regex.test(email) == false
