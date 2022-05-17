@@ -33,6 +33,7 @@ export const languages = {
       HEADING_FORGOT_PASSWORD: "Forgot Password",
       INPUT_PLACEHOLDER_EMAIL: "Write Your Email Here",
       RECOVERY_PASSWORD: "Recovery password",
+      NOT_VALID_EMAIL: "Not valid Email"
     },
 
     NAVBAR: {
@@ -81,7 +82,8 @@ export const languages = {
     FORGOT_PASSWORD: {
       HEADING_FORGOT_PASSWORD: "Olvidaste tu Contraseña",
       INPUT_PLACEHOLDER_EMAIL: "Escribe tu Email aquí",
-      RECOVERY_PASSWORD: "Recuperar contraseña"
+      RECOVERY_PASSWORD: "Recuperar contraseña",
+      NOT_VALID_EMAIL: "Email no válido"
     },
 
     NAVBAR: {
