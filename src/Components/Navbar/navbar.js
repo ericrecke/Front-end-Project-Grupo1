@@ -6,6 +6,7 @@ import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { AiTwotoneMail } from "react-icons/ai";
+import { ThemeSwitch } from '../../Components/ThemeSwitch/ThemeSwitch'
 
 const Navbar = () => {
     return (
@@ -49,6 +50,7 @@ const Navbar = () => {
             </ul>
           </div>
         </div>
+        <ThemeSwitch/>
       </nav>
         );
 }
