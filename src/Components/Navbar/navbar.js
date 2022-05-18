@@ -10,41 +10,41 @@ import { AiTwotoneMail } from "react-icons/ai";
 const Navbar = () => {
     return (
       // logo
-        <nav class="navbar navbar-expand-lg navbar-light bg-success">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#"><FaCat class="cat"/></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <nav className="navbar navbar-expand-lg navbar-light bg-success">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="#"><FaCat className="cat"/></a>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
+          <div className="collapse navbar-collapse" id="navbarNav">
              {/* Lista de navegacion   */}
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Mascotas</a>
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <a className="nav-link active" aria-current="page" href="#">Mascotas</a>
               </li>
-              <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Personas</a>
+              <li className="nav-item">
+              <a className="nav-link active" aria-current="page" href="#">Personas</a>
               </li>
-              <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Novedades</a>
+              <li className="nav-item">
+              <a className="nav-link active" aria-current="page" href="#">Novedades</a>
               </li>
-              <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Contacto</a>
+              <li className="nav-item">
+              <a className="nav-link active" aria-current="page" href="#">Contacto</a>
               </li>
             </ul>
             {/* Redes sociales  */}
             <ul id="redes">
               <li>
-              <a class="navbar-brand" href="#"><FaFacebook class="face"/></a>
+              <a className="navbar-brand" href="#"><FaFacebook className="face"/></a>
               </li>
               <li>
-              <a class="navbar-brand" href="#"><FaInstagram class="insta"/></a>
+              <a className="navbar-brand" href="#"><FaInstagram className="insta"/></a>
               </li>
               <li>
-              <a class="navbar-brand" href="#"><FaTwitter class="twitter"/></a>
+              <a className="navbar-brand" href="#"><FaTwitter className="twitter"/></a>
               </li>
               <li>
-              <a class="navbar-brand" href="#"><AiTwotoneMail class="mail"/></a>
+              <a className="navbar-brand" href="#"><AiTwotoneMail className="mail"/></a>
               </li>
             </ul>
           </div>
