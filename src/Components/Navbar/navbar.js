@@ -6,8 +6,21 @@ import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { AiTwotoneMail } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+import {iosContactOutline} from 'react-icons-kit/ionicons/iosContactOutline'
+import {Icon} from 'react-icons-kit'
+
 
 const Navbar = () => {
+  const { logout, user } = useAuth();
+  const handleLogout = async () => {
+      try {
+        await logout();
+      } catch (error) {
+        console.error(error.message);
+      }
+    };
     return (
       // logo
         <nav className="navbar navbar-expand-lg navbar-light bg-success">
@@ -47,6 +60,26 @@ const Navbar = () => {
               <a className="navbar-brand" href="#"><AiTwotoneMail className="mail"/></a>
               </li>
             </ul>
+             {/* login/signUp   */}
+             {user&&
+            <ul className="navbar-nav rightSide">
+              <li className="nav-item">
+              <p className="userName nav-link active"  aria-current="page"><Icon icon={iosContactOutline}></Icon> {user.email}</p>
+              <button className="logout" onClick={handleLogout}/>
+              </li> </ul> }
+              {!user &&
+              <ul className="navbar-nav rightSide">
+              <li className="nav-item">
+              <Link to="signup" aria-current="page" className="navLink nav-link active">
+              Registrarse
+            </Link>
+              </li>
+              <li className="nav-item">
+              <Link to="login" aria-current="page" className="navLink nav-link active">
+              Ingresar
+              </Link>
+              </li>
+            </ul>}
           </div>
         </div>
       </nav>
