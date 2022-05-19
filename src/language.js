@@ -29,11 +29,20 @@ export const languages = {
             SIGN_UP: "Sign up",
         },
 
+<<<<<<< HEAD
         FORGOT_PASSWORD: {
             HEADING_FORGOT_PASSWORD: "Forgot Password",
             INPUT_PLACEHOLDER_EMAIL: "Write Your Email Here",
             RECOVERY_PASSWORD: "Recovery password",
         },
+=======
+    FORGOT_PASSWORD: {
+      HEADING_FORGOT_PASSWORD: "Forgot Password",
+      INPUT_PLACEHOLDER_EMAIL: "Write Your Email Here",
+      RECOVERY_PASSWORD: "Recovery password",
+      NOT_VALID_EMAIL: "Not valid Email"
+    },
+>>>>>>> 8c2ab3f5281f4685598e51c0d4ee3d91950988de
 
         NAVBAR: {
             NAVBAR_PETS: "Pets",
@@ -78,11 +87,20 @@ export const languages = {
             SIGN_UP: "Registrarse",
         },
 
+<<<<<<< HEAD
         FORGOT_PASSWORD: {
             HEADING_FORGOT_PASSWORD: "Olvidaste tu Contraseña",
             INPUT_PLACEHOLDER_EMAIL: "Escribe tu Email aquí",
             RECOVERY_PASSWORD: "Recuperar contraseña"
         },
+=======
+    FORGOT_PASSWORD: {
+      HEADING_FORGOT_PASSWORD: "Olvidaste tu Contraseña",
+      INPUT_PLACEHOLDER_EMAIL: "Escribe tu Email aquí",
+      RECOVERY_PASSWORD: "Recuperar contraseña",
+      NOT_VALID_EMAIL: "Email no válido"
+    },
+>>>>>>> 8c2ab3f5281f4685598e51c0d4ee3d91950988de
 
         NAVBAR: {
             NAVBAR_PETS: "Mascotas",
