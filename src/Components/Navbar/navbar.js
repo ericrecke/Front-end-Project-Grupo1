@@ -6,6 +6,9 @@ import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { AiTwotoneMail } from "react-icons/ai";
+import { languages } from '../../language';
+
+const _language  = languages['es'];
 
 const Navbar = () => {
     return (
@@ -20,16 +23,16 @@ const Navbar = () => {
              {/* Lista de navegacion   */}
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">Mascotas</a>
+                <a className="nav-link active" aria-current="page" href="#">{_language.NAVBAR.NAVBAR_PETS}</a>
               </li>
               <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">Personas</a>
+              <a className="nav-link active" aria-current="page" href="#">{_language.NAVBAR.NAVBAR_PEOPLE}</a>
               </li>
               <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">Novedades</a>
+              <a className="nav-link active" aria-current="page" href="#">{_language.NAVBAR.NAVBAR_NEWS}</a>
               </li>
               <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">Contacto</a>
+              <a className="nav-link active" aria-current="page" href="#">{_language.NAVBAR.NAVBAR_CONTACT}</a>
               </li>
             </ul>
             {/* Redes sociales  */}
