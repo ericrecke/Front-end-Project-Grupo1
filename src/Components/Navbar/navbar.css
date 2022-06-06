@@ -47,3 +47,32 @@ a {
     margin-left: 50%;
     padding-top: 1%;
 }
+
+.logout{
+  
+    width:3.5rem;
+    height: 1.5rem;
+    background-color: var(--mediumSpringGreen-color);
+    border: none;
+    border-radius: 0.1rem;
+}
+
+.navLink{
+    text-decoration: none;
+    color:black;
+    padding: 2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.navLink:hover{
+    color:black;
+}
+
+.rightSide{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 3rem;
+       
+    
+    }
