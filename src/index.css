@@ -11,3 +11,88 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+
+:root{
+  --fluorescentBlue-color:#79ECE6;
+  --aeroBlue-color:#C5F6DE;
+ --mediumAquamarine-color:#79ECB3;
+ --mediumSpringGreen-color:#29E085;
+ --screaminGreen-color:#8EF070;
+ --mindaro-color:#ECFF70;
+  --orangeYellow-color:#FFD770;
+  --mellowApricot-color:#FFB870;
+  --atomicTangerine-color:#FFA770;
+  --lightSalmon-color:#FF9670;
+}
+
+.containerForm {
+  background-color: var(--orangeYellow-color);
+  margin: 5rem;
+  padding: 2rem;
+}
+
+.containerForm h1 {
+  text-align: center;
+  letter-spacing: 0.2rem;
+  color:var(--lightSalmon-color);
+}
+
+.btnConf {
+  background-color: var(--mediumAquamarine-color);
+  border: none;
+  border-radius: 0.2rem;
+  text-transform: uppercase;
+  width: 10rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+@media (max-width: 420px){
+  .redirect {
+  display: flex;
+  flex-direction: column;
+  align-items: center
+  }
+}
+.redirect {
+  text-decoration: none;
+  color: var(--mediumSpringGreen-color);
+}
+
+.redirect a {
+  color: var(--mediumSpringGreen-color);
+  text-decoration: none;
+  margin-left: 1rem;
+  text-transform: uppercase;
+  font-weight: bolder;
+}
+
+.buttonsConfirm a:hover {
+  color: black;
+}
+
+.buttonsConfirm a {
+  margin-left: 1rem;
+}
+
+.buttonsConfirm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttonsExtra {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btnConf.google {
+  width: 15rem;
+}
+
+.successMsg{
+  color: var(--screaminGreen-color);
+  font-size: 1rem;
+}
