@@ -37,6 +37,7 @@ export const languages = {
     },
 
         NAVBAR: {
+            NAVBAR_INDEX: "Inicio",
             NAVBAR_PETS: "Pets",
             NAVBAR_PEOPLE: "People",
             NAVBAR_NEWS: "News",
@@ -87,6 +88,7 @@ export const languages = {
     },
 
         NAVBAR: {
+            NAVBAR_INDEX: "Inicio",
             NAVBAR_PETS: "Mascotas",
             NAVBAR_PEOPLE: "Personas",
             NAVBAR_NEWS: "Novedades",
