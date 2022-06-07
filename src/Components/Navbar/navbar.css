@@ -1,11 +1,15 @@
 li.nav-item {
-    padding-left: 20%;
-    padding-right: 20%;
+     padding-left: 10%;
+    padding-right: 10%; 
     font-size: 1.15rem;
     font-weight: dark;
     font-family: 'Roboto', sans-serif;
     color: #BB9981;
     text-shadow: 0.1rem 0.1rem 0.1rem #C5D8A4;
+}
+
+.mr-auto {
+    margin-right: auto!important;
 }
 
 a {
