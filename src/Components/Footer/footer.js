@@ -1,5 +1,5 @@
 import React from "react";
-import "./footer.css";
+import "./Footer.css";
 import { ThemeSwitch } from "../ThemeSwitch/ThemeSwitch";
 import { languages } from "../../language";
 import { FaFacebook } from "react-icons/fa";
@@ -10,7 +10,7 @@ const _language = languages["es"];
 
 const Footer = () => {
   return (
-    <footer className="bg-success">
+    <footer className="bg-footer">
     {/* <footer className="bg-success fixed-bottom"> */}
       {/* Redes sociales  */}
       <ul id="redes">

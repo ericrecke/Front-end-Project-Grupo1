@@ -1,3 +1,6 @@
+.bg-navbar{
+    background-color: var(--green-two-web) !important;
+}
 li.nav-item {
      padding-left: 10%;
     padding-right: 10%; 
@@ -52,13 +55,11 @@ a {
     padding-top: 1%;
 }
 
-.logout{
-  
+.logout{  
     width:3.5rem;
-    height: 1.5rem;
-    background-color: var(--mediumSpringGreen-color);
+    background-color: var(--green-web);
     border: none;
-    border-radius: 0.1rem;
+    border-radius: 1rem;
 }
 
 .navLink{
@@ -80,3 +81,7 @@ a {
        
     
     }
+
+.userName{
+    font-size: 1.15rem;
+}

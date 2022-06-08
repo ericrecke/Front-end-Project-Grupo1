@@ -25,6 +25,37 @@ code {
   --mellowApricot-color:#FFB870;
   --atomicTangerine-color:#FFA770;
   --lightSalmon-color:#FF9670;
+  --green-web: #F4FCD9;
+  --green-two-web: #C5D8A4;
+  --brown-web: #BB9981;
+  --brown-two-web: #534340;
+}
+
+.container-main {
+  width: 100%;
+  padding-right: var(--bs-gutter-x, 0.75rem);
+  padding-left: var(--bs-gutter-x, 0.75rem);
+  margin-right: auto;
+  margin-left: auto;
+  flex-direction: column !important;
+  display: flex !important;
+  min-height: 84vh !important;
+  background-size: cover;
+}
+
+.card-web {
+  background-color: var(--green-web) !important;
+}
+
+.container-web{
+  margin-top: 2rem;
+}
+
+.container-white {
+  background-image: url("./assets/images/bgwhite.png");
+}
+.container-dark {
+  background-image: url("./assets/images/bgblack.png");
 }
 
 .containerForm {

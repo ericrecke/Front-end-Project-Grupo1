@@ -25,7 +25,7 @@ const Navbar = () => {
   };
   return (
     // logo
-    <nav className="navbar navbar-expand-lg navbar-light bg-success">
+    <nav className="navbar navbar-expand-lg navbar-light bg-navbar">
       <div className="container-fluid">
         <Link to="../" aria-current="page" className="nav-link active">
           <FaCat className="cat" />
@@ -49,35 +49,39 @@ const Navbar = () => {
                 {_language.NAVBAR.NAVBAR_INDEX}
               </Link>
             </li>
+
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <Link to="/pets" aria-current="page" className="nav-link active">
                 {_language.NAVBAR.NAVBAR_PETS}
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <Link to="/people" aria-current="page" className="nav-link active">
                 {_language.NAVBAR.NAVBAR_PEOPLE}
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <Link to="/news" aria-current="page" className="nav-link active">
                 {_language.NAVBAR.NAVBAR_NEWS}
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <Link to="/contact" aria-current="page" className="nav-link active">
                 {_language.NAVBAR.NAVBAR_CONTACT}
-              </a>
+              </Link>
             </li>
           </ul>
           {/* login/signUp   */}
           {user && (
             <ul className="navbar-nav rightSide">
+              <Icon className="userName" icon={iosContactOutline}></Icon>
+              <li className="nav-item userName nav-link active">
+                {user.email}
+              </li>
               <li className="nav-item">
-                <p className="userName nav-link active" aria-current="page">
-                  <Icon icon={iosContactOutline}></Icon> {user.email}
-                </p>
-                <button className="logout" onClick={handleLogout} />
+                <button className="logout" onClick={handleLogout}>
+                  Salir
+                </button>
               </li>
             </ul>
           )}
