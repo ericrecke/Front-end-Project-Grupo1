@@ -25,10 +25,57 @@ code {
   --mellowApricot-color:#FFB870;
   --atomicTangerine-color:#FFA770;
   --lightSalmon-color:#FF9670;
+  --green-web: #F4FCD9;
+  --green-two-web: #C5D8A4;
+  --brown-web: #BB9981;
+  --brown-two-web: #534340;
+  --green-web-dark: #aeb49b;
+  --green-two-web-dark: #1b1f16;
+  --brown-web-dark: #836b5a;
+  --brown-two-web-dark: #382d2b;
+}
+
+.container-main {
+  width: 100%;
+  padding-right: var(--bs-gutter-x, 0.75rem);
+  padding-left: var(--bs-gutter-x, 0.75rem);
+  margin-right: auto;
+  margin-left: auto;
+  flex-direction: column !important;
+  display: flex !important;
+  min-height: 85vh !important;
+  background-size: cover;
+}
+
+.card-web {
+  background-color: var(--green-web) !important;
+}
+
+.container-web{
+  margin-top: 2rem;
+}
+
+.container-white {
+  background-color: white;
+}
+.container-black {
+  background-color: black;
+}
+.container-brown {
+  background-color: var(--brown-web);
+}
+.container-brownTwo {
+  background-color: var(--brown-two-web);
+}
+.container-bgBlack {
+  background-image: url("./assets/images/bgblack.png");
+}
+.container-bgWhite {
+  background-image: url("./assets/images/bgwhite.png");
 }
 
 .containerForm {
-  background-color: var(--orangeYellow-color);
+  background-color: var(--green-web);
   margin: 5rem;
   padding: 2rem;
 }
@@ -36,11 +83,12 @@ code {
 .containerForm h1 {
   text-align: center;
   letter-spacing: 0.2rem;
-  color:var(--lightSalmon-color);
+  color:var(--brown-two-web);
 }
 
 .btnConf {
-  background-color: var(--mediumAquamarine-color);
+  background-color: var(--green-two-web);
+  color: var(--brown-two-web);
   border: none;
   border-radius: 0.2rem;
   text-transform: uppercase;
@@ -52,16 +100,18 @@ code {
   .redirect {
   display: flex;
   flex-direction: column;
-  align-items: center
+  align-items: center;
   }
 }
 .redirect {
   text-decoration: none;
-  color: var(--mediumSpringGreen-color);
+  color: var(--brown-two-web);
+  text-align: center;
+  width: 100%;
 }
 
 .redirect a {
-  color: var(--mediumSpringGreen-color);
+  color: var(--brown-two-web);
   text-decoration: none;
   margin-left: 1rem;
   text-transform: uppercase;

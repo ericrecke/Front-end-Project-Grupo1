@@ -1,0 +1,27 @@
+.card-bg{
+    margin-bottom: 5px;
+    background-color: transparent;
+}
+.svg-bg{
+    width: 100%;
+    height: 100%;
+}
+.rect-bg{
+    width:  100%;
+    height: 100%;
+    stroke-width:1;
+    stroke:rgb(0,0,0);
+}
+.rect-bg-white{
+    fill: #fff;
+}
+.rect-bg-dark{
+    fill: #000;
+}
+.rect-bg-brown{
+    fill: var(--brown-web);
+}
+.rect-bg-brownTwo {
+    fill:var(--brown-two-web);
+}
+

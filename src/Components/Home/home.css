@@ -1,0 +1,17 @@
+.cat {
+    color: #BB9981;
+}
+.cat-home {
+    height: 250px;
+    width: 250px;
+    float: left;
+    margin: 0 15px 15px 0;
+}
+
+.card-title-web {
+    color: var(--brown-two-web);
+}
+
+.card-text-web {
+    color: var(--brown-two-web);
+}

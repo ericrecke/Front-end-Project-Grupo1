@@ -1,7 +1,8 @@
 import React from "react";
+import { useContext } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./navbar.css";
-import { FaCat } from "react-icons/fa";
+import { FaCat, FaWrench } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
@@ -11,10 +12,13 @@ import { useAuth } from "../../context/AuthContext";
 import { iosContactOutline } from "react-icons-kit/ionicons/iosContactOutline";
 import { Icon } from "react-icons-kit";
 import { languages } from "../../language";
-import { ThemeSwitch } from "../ThemeSwitch/ThemeSwitch";
-const _language = languages["es"];
+import { ThemeSwitch } from "../ThemeSettings/ThemeSwitch/ThemeSwitch";
+import ThemeContext from "../../context/ThemeContext";
+import { UserSettingsModal } from "../ThemeSettings/ThemeSettings";
 
 const Navbar = () => {
+  const { lang,dark } = useContext(ThemeContext);
+  const _language = languages[lang];
   const { logout, user } = useAuth();
   const handleLogout = async () => {
     try {
@@ -25,7 +29,7 @@ const Navbar = () => {
   };
   return (
     // logo
-    <nav className="navbar navbar-expand-lg navbar-light bg-success">
+    <nav className={`navbar navbar-expand-lg navbar${dark ? "-dark" : "-light"} bg-navbar${dark ? "-dark" : ""}`}>
       <div className="container-fluid">
         <Link to="../" aria-current="page" className="nav-link active">
           <FaCat className="cat" />
@@ -49,35 +53,47 @@ const Navbar = () => {
                 {_language.NAVBAR.NAVBAR_INDEX}
               </Link>
             </li>
+
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <Link to="/pets" aria-current="page" className="nav-link active">
                 {_language.NAVBAR.NAVBAR_PETS}
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <Link
+                to="/people"
+                aria-current="page"
+                className="nav-link active"
+              >
                 {_language.NAVBAR.NAVBAR_PEOPLE}
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <Link to="/news" aria-current="page" className="nav-link active">
                 {_language.NAVBAR.NAVBAR_NEWS}
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <Link
+                to="/contact"
+                aria-current="page"
+                className="nav-link active"
+              >
                 {_language.NAVBAR.NAVBAR_CONTACT}
-              </a>
+              </Link>
             </li>
           </ul>
           {/* login/signUp   */}
           {user && (
             <ul className="navbar-nav rightSide">
+              <Icon className="userName" icon={iosContactOutline}></Icon>
+              <li className="nav-item userName nav-link active">
+                {user.email}
+              </li>
               <li className="nav-item">
-                <p className="userName nav-link active" aria-current="page">
-                  <Icon icon={iosContactOutline}></Icon> {user.email}
-                </p>
-                <button className="logout" onClick={handleLogout} />
+                <button className="logout" onClick={handleLogout}>
+                  Salir
+                </button>
               </li>
             </ul>
           )}
@@ -103,32 +119,12 @@ const Navbar = () => {
               </li>
             </ul>
           )}
-          {/* Redes sociales  */}
-          {/* <ul id="redes">
-            <li>
-              <a className="navbar-brand" href="#">
-                <FaFacebook className="face" />
-              </a>
-            </li>
-            <li>
-              <a className="navbar-brand" href="#">
-                <FaInstagram className="insta" />
-              </a>
-            </li>
-            <li>
-              <a className="navbar-brand" href="#">
-                <FaTwitter className="twitter" />
-              </a>
-            </li>
-            <li>
-              <a className="navbar-brand" href="#">
-                <AiTwotoneMail className="mail" />
-              </a>
-            </li>
-          </ul> */}
+          {/* <Link to="/settings" aria-current="page" className="nav-link active">
+            <FaWrench className="wrench" />
+          </Link> */}
+          <UserSettingsModal />
         </div>
       </div>
-      <ThemeSwitch />
     </nav>
   );
 };
