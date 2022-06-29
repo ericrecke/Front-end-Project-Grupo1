@@ -1,87 +1,96 @@
-.bg-navbar{
-    background-color: var(--green-two-web) !important;
+.bg-navbar {
+  background-color: var(--green-two-web) !important;
+}
+.bg-navbar-dark {
+  background-color: var(--green-two-web-dark) !important;
 }
 li.nav-item {
-     padding-left: 10%;
-    padding-right: 10%; 
-    font-size: 1.15rem;
-    font-weight: dark;
-    font-family: 'Roboto', sans-serif;
-    color: #BB9981;
-    text-shadow: 0.1rem 0.1rem 0.1rem #C5D8A4;
+  padding-left: 10%;
+  padding-right: 10%;
+  font-size: 1.15rem;
+  font-weight: dark;
+  font-family: "Roboto", sans-serif;
+  color: #bb9981;
+  text-shadow: 0.1rem 0.1rem 0.1rem #c5d8a4;
 }
 
 .mr-auto {
-    margin-right: auto!important;
+  margin-right: auto !important;
 }
 
 a {
-    padding-left: 2%;
+  padding-left: 2%;
 }
 
 .cat {
-    font-size: 2rem;
-    color: #F4FCD9;
+  font-size: 2rem;
+  color: #f4fcd9;
 }
 
 .face {
-    font-size: 2rem;
-    color: blue;
+  font-size: 2rem;
+  color: blue;
 }
 
 .insta {
-    font-size: 2rem;
-    color: purple;
+  font-size: 2rem;
+  color: purple;
 }
 
 .twitter {
-    font-size: 2rem;
-    color: rgb(36, 139, 207);
+  font-size: 2rem;
+  color: rgb(36, 139, 207);
 }
 
 .mail {
-    font-size: 2rem;
-    color: red;
+  font-size: 2rem;
+  color: red;
 }
 
 #redes {
-    display: grid;
-    grid-template-columns: 6fr 6fr 6fr 6fr;
-    grid-column-gap: 1rem;
-    justify-content: center;
-    list-style: none;
-    /* border: 5px solid black; */
-    margin-left: 50%;
-    padding-top: 1%;
+  display: grid;
+  grid-template-columns: 6fr 6fr 6fr 6fr;
+  grid-column-gap: 1rem;
+  justify-content: center;
+  list-style: none;
+  /* border: 5px solid black; */
+  margin-left: 50%;
+  padding-top: 1%;
 }
 
-.logout{  
-    width:3.5rem;
-    background-color: var(--green-web);
-    border: none;
-    border-radius: 1rem;
+.logout {
+  width: 3.5rem;
+  background-color: var(--green-web);
+  border: none;
+  border-radius: 1rem;
 }
 
-.navLink{
-    text-decoration: none;
-    color:black;
-    padding: 2rem;
-    text-transform: uppercase;
-    font-weight: bold;
+.navLink {
+  text-decoration: none;
+  color: black;
+  padding: 2rem;
+  text-transform: uppercase;
+  font-weight: bold;
 }
-.navLink:hover{
-    color:black;
+.navLink:hover {
+  color: black;
 }
 
-.rightSide{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    margin-right: 3rem;
-       
-    
-    }
+.rightSide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 3rem;
+}
 
-.userName{
-    font-size: 1.15rem;
+.userName {
+  font-size: 1.15rem;
+}
+
+.wrench{
+    font-size: 1.5rem;
+    color: #bb9981;
+}
+.wrench:hover {
+    color: #776152;
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./Contact.css";
-import { ThemeSwitch } from "../ThemeSwitch/ThemeSwitch";
 import { languages } from "../../language";
 
 const _language = languages["es"];

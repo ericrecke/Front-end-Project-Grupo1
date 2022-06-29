@@ -10,3 +10,6 @@ footer {
 .bg-footer{
     background-color: var(--green-two-web) !important;
 }
+.bg-footer-dark{
+    background-color: var(--green-two-web-dark) !important;
+}

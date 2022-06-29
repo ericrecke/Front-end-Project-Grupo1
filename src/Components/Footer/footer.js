@@ -1,17 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Footer.css";
-import { ThemeSwitch } from "../ThemeSwitch/ThemeSwitch";
 import { languages } from "../../language";
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { AiTwotoneMail } from "react-icons/ai";
-const _language = languages["es"];
+import ThemeContext from "../../context/ThemeContext";
 
 const Footer = () => {
+  const { dark } = useContext(ThemeContext);
+  const _language = languages["es"];
   return (
-    <footer className="bg-footer">
-    {/* <footer className="bg-success fixed-bottom"> */}
+    <footer className={`bg-footer${dark ? "-dark" : ""}`}>
       {/* Redes sociales  */}
       <ul id="redes">
         <li>

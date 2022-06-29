@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./News.css";
-import { ThemeSwitch } from "../ThemeSwitch/ThemeSwitch";
+import { ThemeSwitch } from "../ThemeSettings/ThemeSwitch/ThemeSwitch";
 import { languages } from "../../language";
 
 const _language = languages["es"];
