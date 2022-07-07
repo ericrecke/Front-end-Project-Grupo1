@@ -5,15 +5,15 @@ const ThemeProvider = ({ children }) => {
   var langStorage = localStorage.getItem("language");
   var bgStorage = localStorage.getItem("backgroundWeb");
   var darkStorage = localStorage.getItem("isDarkMode");
-
+debugger
   const [lang, setLang] = React.useState(
-    langStorage !== null || langStorage !== undefined ? langStorage : "es"
+    langStorage !== null && langStorage !== undefined ? langStorage : "es"
   );
   const [background, setBackground] = React.useState(
-    bgStorage !== null || bgStorage !== undefined ? bgStorage : "black"
+    bgStorage !== null && bgStorage !== undefined ? bgStorage : "black"
   );
   const [dark, setDark] = React.useState(
-    darkStorage !== null || darkStorage !== undefined ? darkStorage : false
+    darkStorage !== null && darkStorage !== undefined ? darkStorage : false
   );
 
   const toggleLang = (e) => {

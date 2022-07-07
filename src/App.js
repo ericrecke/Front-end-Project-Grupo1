@@ -8,6 +8,7 @@ import Pets from "./Components/Pets/Pets";
 import People from "./Components/People/People";
 import News from "./Components/News/News";
 import Contact from "./Components/Contact/Contact";
+import Perfil from "./Components/Perfil/Perfil";
 import UserSettings from "./Components/ThemeSettings/ThemeSettings";
 import Login from "./Components/Login/Login";
 import Footer from "./Components/Footer/Footer";
@@ -44,6 +45,7 @@ function App() {
               <Route path="/news" element={<News />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/settings" element={<UserSettings />} />
+              <Route path="/perfil" element={<Perfil />} />
             </Routes>
           </Background>
           {/* </div> */}

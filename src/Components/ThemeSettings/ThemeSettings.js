@@ -37,44 +37,44 @@ export const UserSettingsModal = () => {
     <>
       <button
         type="button"
-        class="btn"
+        className="btn"
         data-bs-toggle="modal"
         data-bs-target="#staticBackdrop"
       >
         <FaWrench className="wrench" />
       </button>
       <div
-        class="modal fade"
+        className="modal fade"
         id="staticBackdrop"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
-        tabindex="-1"
+        tabIndex={-1}
         aria-labelledby="staticBackdropLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog">
-          <div class="modal-content card-web">
-            <div class="modal-header">
+        <div className="modal-dialog">
+          <div className="modal-content card-web">
+            <div className="modal-header">
               <h5 className="card-title card-title-web">
                 {_language.TOOLS.HEADING}
               </h5>
               <button
                 type="button"
-                class="btn-close"
+                className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
               <p>{_language.TOOLS.HEADING_THEME}</p>
               <ThemeSwitch />
               <ThemeLanguage />
               <ThemeBackgrounds />
             </div>
-            <div class="modal-footer">
+            <div className="modal-footer">
               <button
                 type="button"
-                class="btn btn-secondary"
+                className="btn btn-secondary"
                 data-bs-dismiss="modal"
               >
                 Close
