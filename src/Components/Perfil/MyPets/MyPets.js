@@ -56,6 +56,7 @@ const MyPets = (props) => {
               key={item.name}
             >
               {item.name}
+              {/* <button type="button" class="btn-close float-end" aria-label="Close"></button> */}
             </button>
           ))}
         </div>
@@ -206,6 +207,8 @@ const PetModal = (props) => {
     debugger;
     e.preventDefault();
     if (petUser === undefined || petUser === null) {
+      setPetUser((oldPets) => oldPets.filter((data) => data.id === petAdd.id));
+      // previousEmployeeData => previousEmployeeData.filter(data)=> data.id != employeeId )
     }
     console.log(petAdd);
   };
@@ -253,7 +256,7 @@ const PetModal = (props) => {
             name="petsurName"
             className="form-control"
             onChange={onChangePet}
-            value={petAdd.surname}
+            value={petAdd.surName}
             placeholder={"Apellido o Hogar"}
             required
           />
