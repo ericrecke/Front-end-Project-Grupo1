@@ -20,21 +20,12 @@ import ThemeContext from "./context/ThemeContext";
 import Background from "./Components/Background/Background";
 
 function App() {
-  // var background = localStorage.getItem("backgroundWeb");
-  debugger;
   return (
     <ThemeProvider>
       <AuthProvider>
         <BrowserRouter>
           <Navbar />
-          {/* <div className={isDarkMode === "true" ? 'container-main container-dark' : 'container-main container-white'}> */}
-          {/* <div
-            className={
-              background !== null
-                ? "container-main container-" + background
-                : "container-main container-white"
-            }
-          > */}
+
           <Background>
             <Routes>
               <Route path="/" element={<Home />} />

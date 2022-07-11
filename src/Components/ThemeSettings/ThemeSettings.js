@@ -9,6 +9,7 @@ import dog_Two from "../../assets/images/dog_2.jpg";
 import { ThemeSwitch } from "./ThemeSwitch/ThemeSwitch";
 import ThemeContext from "../../context/ThemeContext";
 import ThemeLanguage from "./ThemeLanguage/ThemeLanguage";
+import Modal from "../Modal/Modal";
 
 const UserSettings = () => {
   const { lang } = useContext(ThemeContext);
@@ -39,50 +40,16 @@ export const UserSettingsModal = () => {
         type="button"
         className="btn"
         data-bs-toggle="modal"
-        data-bs-target="#staticBackdrop"
+        data-bs-target="#modalSettings"
       >
         <FaWrench className="wrench" />
       </button>
-      <div
-        className="modal fade"
-        id="staticBackdrop"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabIndex={-1}
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog">
-          <div className="modal-content card-web">
-            <div className="modal-header">
-              <h5 className="card-title card-title-web">
-                {_language.TOOLS.HEADING}
-              </h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body">
-              <p>{_language.TOOLS.HEADING_THEME}</p>
+      <Modal title={_language.TOOLS.HEADING} modalName="modalSettings">
+      <p>{_language.TOOLS.HEADING_THEME}</p>
               <ThemeSwitch />
               <ThemeLanguage />
               <ThemeBackgrounds />
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      </Modal>
     </>
   );
 };

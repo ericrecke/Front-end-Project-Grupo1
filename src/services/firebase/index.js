@@ -17,6 +17,12 @@ import {getAuth} from 'firebase/auth'
 // export const auth=getAuth(app)
 // export const firestoreDB= getFirestore(app)
 
+
+
+/*
+CONFIGURACIÓN DE ERIC
+*/
+
 const firebaseConfig = {
   apiKey: "AIzaSyB28-EvahRxlojEJKh9AZkgMw1oIGGupgY",
   authDomain: "front-end-project-group1.firebaseapp.com",
@@ -31,4 +37,6 @@ const app = initializeApp(firebaseConfig);
 
 export const auth=getAuth(app);
 export const firestoreDB= getFirestore(app);
-/* asasdasd */
+/*
+CONFIGURACIÓN DE ERIC
+*/

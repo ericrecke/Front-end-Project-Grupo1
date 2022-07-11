@@ -1,0 +1,9 @@
+.list-group-flex {
+    display: flex;
+    flex-flow: row wrap;
+}
+.list-group-item-flex {
+    /* width: 200px; */
+    width: 50%;
+    height: 200px;
+}

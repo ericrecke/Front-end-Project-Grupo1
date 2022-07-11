@@ -18,7 +18,7 @@ const Pets = () => {
     debugger;
     try {
       debugger;
-      async function querySnapshot() {
+      async function getFireBaseDoc() {
         const myCollection = collection(firestoreDB, "users");
         const querySnapshot = await getDocs(myCollection);
         console.log(querySnapshot);
@@ -27,7 +27,7 @@ const Pets = () => {
           console.log(`${doc.id} => ${doc.data()}`);
         });
       }
-      querySnapshot();
+      getFireBaseDoc();
     } catch (error) {
       console.log(error.message);
     }

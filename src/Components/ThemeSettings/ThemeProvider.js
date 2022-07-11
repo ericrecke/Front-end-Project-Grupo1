@@ -5,7 +5,6 @@ const ThemeProvider = ({ children }) => {
   var langStorage = localStorage.getItem("language");
   var bgStorage = localStorage.getItem("backgroundWeb");
   var darkStorage = localStorage.getItem("isDarkMode");
-debugger
   const [lang, setLang] = React.useState(
     langStorage !== null && langStorage !== undefined ? langStorage : "es"
   );
