@@ -6,19 +6,42 @@ import Modal from "../../Modal/Modal";
 import { FaRegUser } from "react-icons/fa";
 import { useDropzone } from "react-dropzone";
 import InsertFile from "../../../assets/images/insert-file.png";
+import { firestorage } from "../../../services/firebase";
+import {
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  getBlob,
+} from "firebase/storage";
 
+var PetJson = {
+  type: "dog",
+  name: "",
+  surName: "",
+  age: 0,
+  owner: "",
+  images: [],
+};
 const MyPets = (props) => {
   const { petUser, setPetUser, docUser } = props;
   const [petSelected, setPetSelected] = useState(undefined);
+  const [petToSend, setpetToSend] = useState(undefined);
   const openPet = async (e) => {
     e.preventDefault();
     const { textContent } = e.target;
     var petFind = findArrayElementByName(petUser, textContent);
     if (petFind !== undefined && petFind !== null) {
-      setPetSelected(petFind);
+      setpetToSend(petFind);
     }
   };
   debugger;
+
+  useEffect(() => {
+    debugger;
+    if (petSelected !== null) setpetToSend(petSelected);
+    else setpetToSend(PetJson);
+  }, [petSelected]);
 
   if (petUser !== undefined && petUser !== null && petUser.length > 0) {
     return (
@@ -37,8 +60,14 @@ const MyPets = (props) => {
           ))}
         </div>
         <MyPetsDashboard
-          petSelected={petSelected}
-          setPetSelected={setPetSelected}
+          petSelected={petToSend}
+          setPetSelected={setpetToSend}
+          petUser={petUser}
+          setPetUser={setPetUser}
+          docUser={docUser}
+        />
+        <PetModal
+          pet={petToSend}
           petUser={petUser}
           setPetUser={setPetUser}
           docUser={docUser}
@@ -74,10 +103,17 @@ const MyPets = (props) => {
     <div>
       <p>¿No tienes ninguna mascota agregada, quieres agregar alguna?</p>
       <MyPetsDashboard
-        petSelected={undefined}
-        setPetSelected={setPetSelected}
+        petSelected={petToSend}
+        setPetSelected={setpetToSend}
         petUser={petUser}
         setPetUser={setPetUser}
+        docUser={docUser}
+      />
+      <PetModal
+        pet={null}
+        petUser={petUser}
+        setPetUser={setPetUser}
+        docUser={docUser}
       />
     </div>
   );
@@ -86,8 +122,11 @@ const MyPets = (props) => {
 const MyPetsDashboard = (props) => {
   const { petSelected, setPetSelected, petUser, setPetUser, docUser } = props;
   const sendNewPet = () => {
-    setPetSelected(undefined);
+    debugger;
+    setPetSelected(null);
   };
+
+  debugger;
   return (
     <>
       <div className="buttonsConfirm">
@@ -101,12 +140,6 @@ const MyPetsDashboard = (props) => {
           {/* {_language.PERFIL.CONFIRM} */}
           Agregar Mascota
         </button>
-        <PetModal
-          pet={petSelected}
-          petUser={petUser}
-          setPetUser={setPetUser}
-          docUser={docUser}
-        />
       </div>
     </>
   );
@@ -114,26 +147,16 @@ const MyPetsDashboard = (props) => {
 
 const PetModal = (props) => {
   const { pet, petUser, setPetUser, docUser } = props;
-  const [petAdd, setPetAdd] = React.useState({
-    type: "dog",
-    name: "",
-    age: 0,
-    owner: docUser.id,
-    images: [],
-  });
+  debugger;
+  const [petAdd, setPetAdd] = React.useState(PetJson);
   const [petImgs, setPetImgs] = useState([]);
   useEffect(() => {
+    debugger;
     if (pet !== undefined && pet !== null) {
       setPetAdd(pet);
       setPetImgs(pet.images);
     } else {
-      setPetAdd({
-        type: "dog",
-        name: "",
-        age: 0,
-        owner: docUser.id,
-        images: [],
-      });
+      setPetAdd(PetJson);
       setPetImgs([]);
     }
   }, [pet]);
@@ -153,23 +176,10 @@ const PetModal = (props) => {
       setPetAdd({ ...petAdd, type: getValue });
     } else if (objTarget.name === "petName") {
       setPetAdd({ ...petAdd, name: getValue });
+    } else if (objTarget.name === "petsurName") {
+      setPetAdd({ ...petAdd, surName: getValue });
     } else if (objTarget.name === "petAge") {
       setPetAdd({ ...petAdd, age: getValue });
-    } else if (objTarget.name === "petImgOne") {
-      setPetAdd({
-        ...petAdd,
-        images: { ...petAdd.images, imageOne: getValue },
-      });
-    } else if (objTarget.name === "petImgTwo") {
-      setPetAdd({
-        ...petAdd,
-        images: { ...petAdd.images, imageTwo: getValue },
-      });
-    } else if (objTarget.name === "petImgThree") {
-      setPetAdd({
-        ...petAdd,
-        images: { ...petAdd.images, imageThree: getValue },
-      });
     }
   };
 
@@ -192,6 +202,14 @@ const PetModal = (props) => {
     console.log(petAdd);
   };
 
+  const deletePet = async (e) => {
+    debugger;
+    e.preventDefault();
+    if (petUser === undefined || petUser === null) {
+    }
+    console.log(petAdd);
+  };
+
   return (
     <>
       <Modal
@@ -200,7 +218,7 @@ const PetModal = (props) => {
         childrenFooter={
           <ModalBtn
             save={savePet}
-            clearObj={pet !== undefined && pet !== null ? "" : undefined}
+            clearObj={pet !== undefined && pet !== null ? deletePet : undefined}
           />
         }
       >
@@ -226,6 +244,18 @@ const PetModal = (props) => {
             className="form-control"
             onChange={onChangePet}
             value={petAdd.name}
+            placeholder={"Nombre.."}
+            required
+          />
+          <label>Apellido</label>
+          <input
+            type="string"
+            name="petsurName"
+            className="form-control"
+            onChange={onChangePet}
+            value={petAdd.surname}
+            placeholder={"Apellido o Hogar"}
+            required
           />
           <label>Edad</label>
           <input
@@ -234,16 +264,18 @@ const PetModal = (props) => {
             className="form-control"
             onChange={onChangePet}
             value={petAdd.age}
+            placeholder={"Edad.."}
+            required
           />
           <label>Imagenes</label>
-          <div className="list-group">
-            <UploadImage
-              imageUpload={petImgs}
-              setImageUpload={setPetImgs}
-              internalArray={petAdd.images}
-              arrayResult={true}
-            />
-          </div>
+          {/* <div className="list-group list-group-flex"> */}
+          <UploadImage
+            imageUpload={petImgs}
+            setImageUpload={setPetImgs}
+            internalArray={petAdd.images}
+            arrayResult={true}
+          />
+          {/* </div> */}
         </fieldset>
       </Modal>
     </>
@@ -305,7 +337,7 @@ const ImgUpload = (props) => {
           className={
             isArray
               ? "list-group-item list-group-item-action list-group-item-flex"
-              : "container-perfil__image"
+              : "img-upload"
           }
           src={src}
           alt="Pet"
@@ -315,7 +347,7 @@ const ImgUpload = (props) => {
   } else {
     return (
       <>
-        <FaRegUser className="container-perfil__image" />
+        <FaRegUser className="img-upload" />
       </>
     );
   }
@@ -346,7 +378,8 @@ const UploadImage_Response = (props) => {
       debugger;
       const file = acceptedFiles[0];
       var fileTosave = {
-        file: file,
+        // file: file,
+        name: file.name,
         preview: URL.createObjectURL(file),
       };
       if (arrayResult) {
@@ -370,16 +403,17 @@ const UploadImage_Response = (props) => {
         <div className="upload-logo" {...getRootProps()}>
           <input {...getInputProps()} />
           <div className="list-group list-group-flex">
+            <ImgUpload src={logoUrl ? logoUrl : undefined} isArray />
             {imageUpload.map((image) =>
               isDragActive ? (
                 <ImgUpload
-                  key={image.file.name}
+                  key={image.name}
                   src={image.preview !== undefined ? image.preview : undefined}
                   isArray
                 />
               ) : (
                 <ImgUpload
-                  key={image.file.name}
+                  key={image.name}
                   src={image.preview !== undefined ? image.preview : undefined}
                   isArray
                 />

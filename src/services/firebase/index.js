@@ -1,6 +1,7 @@
-import { initializeApp } from "firebase/app";
+import firebase, { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import {getAuth} from 'firebase/auth'
+import { getStorage } from "firebase/storage";
+import { getAuth } from "firebase/auth";
 
 // const firebaseConfig = {
 //   apiKey:'AIzaSyB8Loqws5uDTkF2GGqJM5Sstn3LUCHZBkI',
@@ -12,12 +13,9 @@ import {getAuth} from 'firebase/auth'
 //   measurementId: 'G-85MCC6VFWB',
 // };
 
-
 // const app = initializeApp(firebaseConfig);
 // export const auth=getAuth(app)
 // export const firestoreDB= getFirestore(app)
-
-
 
 /*
 CONFIGURACIÓN DE ERIC
@@ -29,14 +27,16 @@ const firebaseConfig = {
   projectId: "front-end-project-group1",
   storageBucket: "front-end-project-group1.appspot.com",
   messagingSenderId: "634463972369",
-  appId: "1:634463972369:web:515906789b30f9913c55b0"
+  appId: "1:634463972369:web:515906789b30f9913c55b0",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-export const auth=getAuth(app);
-export const firestoreDB= getFirestore(app);
+export const auth = getAuth(app);
+export const firestoreDB = getFirestore(app);
+export const firestorage = getStorage(app);
+
 /*
 CONFIGURACIÓN DE ERIC
 */

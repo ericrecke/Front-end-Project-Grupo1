@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useId, useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./Perfil.css";
 import { ThemeSwitch } from "../ThemeSettings/ThemeSwitch/ThemeSwitch";
@@ -18,6 +18,7 @@ import {
   setDoc,
   updateDoc,
 } from "firebase/firestore";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { firestoreDB } from "../../services/firebase";
 import Modal from "../Modal/Modal";
 import MyPets from "./MyPets/MyPets";
@@ -28,6 +29,8 @@ const Perfil = () => {
   const [docUser, setDocUser] = useState(null);
   const [fbDocument, setFbDocument] = useState(null);
   const [petUser, setPetUser] = useState([]);
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveResult, setSaveResult] = useState(undefined);
 
   async function querySnapshot() {
     if (user !== null && user.email !== undefined) {
@@ -95,6 +98,11 @@ const Perfil = () => {
 
   const saveForm = async (e) => {
     e.preventDefault();
+    setIsSaving(true);
+    setSaveResult(undefined);
+    const metadata = {
+      contentType: "image/jpeg",
+    };
     debugger;
     if (docUser !== undefined && docUser !== null) {
       if (
@@ -104,11 +112,34 @@ const Perfil = () => {
       ) {
         try {
           petUser.map(async (item) => {
-            debugger;
-            const docRef = await addDoc(collection(firestoreDB, "pets"), item);
-            console.log("Pet written with ID: ", docRef.id);
-            docUser.pets.push(docRef.id);
+            let petRef = undefined;
+            if (item.id !== undefined && item.id !== null) {
+              await setDoc(doc(firestoreDB, "pets", item.id), item);
+              petRef = item;
+            } else {
+              petRef = await addDoc(collection(firestoreDB, "pets"), item);
+              item.id = petRef.id;
+              docUser.pets.push(petRef.id);
+            }
             await setDoc(doc(firestoreDB, "users", user.email), docUser);
+            item.images.map(async (imagePet) => {
+              if (imagePet.type === undefined || imagePet.type === null) {
+                const storage = getStorage();
+                const storageRef = ref(storage, "pets/" + imagePet.name);
+                let blob = await fetch(imagePet.preview).then((r) => r.blob());
+                await uploadBytes(storageRef, blob, metadata);
+                imagePet.type = item.type;
+                const getFile = await getDownloadURL(storageRef);
+                imagePet.preview = getFile;
+              }
+              await setDoc(doc(firestoreDB, "pets", petRef.id), item);
+              setIsSaving(false);
+              setSaveResult({
+                ...saveResult,
+                success: true,
+                data: "Información guardada satisfactoriamente.",
+              });
+            });
           });
         } catch (e) {
           console.error("Error adding Pet: ", e);
@@ -132,6 +163,7 @@ const Perfil = () => {
                     autoComplete="off"
                     className="form-group container-perfil__text"
                   >
+                    <Alerts isSaving={isSaving} saveResult={saveResult} />
                     <fieldset>
                       <h5 className="card-title card-title-web">
                         {/* {_language.PERFIL.TITLE} */}
@@ -192,6 +224,58 @@ const Perfil = () => {
       </div>
     );
   }
+};
+
+const Alerts = (props) => {
+  const { isSaving, saveResult } = props;
+  if (isSaving) {
+    return (
+      <>
+        <Alerts_Header classAlert="alert-warning">
+          <div className="spinner-border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+          <strong>Guardando datos,</strong> por favor espere.
+        </Alerts_Header>
+      </>
+    );
+  } else if (saveResult !== undefined && saveResult.success) {
+    return (
+      <>
+        <Alerts_Header classAlert="alert-success">
+          {saveResult.data}
+        </Alerts_Header>
+      </>
+    );
+  } else if (saveResult !== undefined && !saveResult.success) {
+    return (
+      <>
+        <Alerts_Header classAlert="alert-danger">
+          {saveResult.data}
+        </Alerts_Header>
+      </>
+    );
+  }
+};
+
+const Alerts_Header = (props) => {
+  const { children, classAlert } = props;
+  return (
+    <>
+      <div
+        className={`alert ${classAlert} alert-dismissible fade show`}
+        role="alert"
+      >
+        {children}
+        <button
+          type="button"
+          className="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+    </>
+  );
 };
 
 const ImgPerfil = (props) => {
