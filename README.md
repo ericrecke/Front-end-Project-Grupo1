@@ -3,13 +3,13 @@
 Temática elegida: Aplicación tipo Tinder para adopción de mascotas.
 
 
-| Componente | Mmiembro | Status |
+| Componente | Miembro | Status |
 | ------------- | ------------- | ------------- |
 | Register Component | Agustina Scarpinelli  | Completado  |
 | Login Component | Agustina Scarpinelli  | Completado  |
 | Firebase Component | Agustina Scarpinelli  | Completado  |
 | Router React Component | Agustina Scarpinelli  | Completado  |
-| Ariel farbiaz React Component | Agustina Scarpinelli  | Completado  |
+| React Component | Ariel farbiaz | Completado  |
 | Footer Component | Eric Recke  | Completado  |
 | Home Component  | Eric Recke  | Completado  |
 | Language Component  | Eric Recke  | Completado  |
@@ -27,4 +27,4 @@ Temática elegida: Aplicación tipo Tinder para adopción de mascotas.
 | Contact Component  | --  | Pendiente  |
 | ReStructure Components(Perfil-MyPets, pasarlos a variables reutilizables (los datos que se obtienen en firebase para reutilizar en otros componentes))  | Eric Recke  | Pendiente  |
 | Perfil- Add Pet (por ahora guarda 3 imagenes, hacerlo luego dinamico en un array) Component  | Eric Recke  | Pendiente  |
-| Firebase Component Mejoras, falta separarlo en componentes esta en el perfil de components | Agustina Scarpinelli  | Completado  |
+| Firebase Component Mejoras, falta separarlo en componentes esta en el perfil de components | Eric Recke  | Completado  |
