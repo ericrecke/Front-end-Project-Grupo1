@@ -17,6 +17,7 @@ import ThemeContext from "../../context/ThemeContext";
 // Faltaria agregar el tema Dark
 // Es solo una base
 const Home = () => {
+  debugger
   const { lang } = useContext(ThemeContext);
   const _language = languages[lang];
   return (

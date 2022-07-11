@@ -1,0 +1,33 @@
+.list-group-flex {
+  display: flex;
+  flex-flow: row wrap;
+}
+.list-group-item-flex {
+  /* width: 200px; */
+  width: 50%;
+  height: 200px;
+  cursor: pointer;
+}
+
+.list-group-upload-flex:hover {
+  width: 50%;
+  height: 200px;
+  cursor: pointer;
+  border: 20px;
+}
+
+.img-upload {
+  width: 200px;
+  object-fit: cover;
+  align-self: flex-start;
+  border-radius: 20px;
+  margin: 30px;
+  transition: background-color 0.5s;
+}
+
+.img-upload:hover {
+  cursor: pointer;
+  border: 20px;
+  border-color: black;
+  background-color: rgba(88, 88, 88, 0.46);
+}

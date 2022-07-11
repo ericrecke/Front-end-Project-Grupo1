@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Carousel } from "react-bootstrap";
 import "./Pets.css";
 import { FaRegHeart, FaRegTimesCircle } from "react-icons/fa";
@@ -7,8 +7,32 @@ import { languages } from "../../language";
 import dog_One from "../../assets/images/dog_1.jpg";
 import dog_Two from "../../assets/images/dog_2.jpg";
 
+import firebase, { firestoreDB } from "../../services/firebase";
+import { collection, getDocs } from "firebase/firestore";
+
 const _language = languages["es"];
 const Pets = () => {
+  debugger;
+
+  useEffect(() => {
+    debugger;
+    try {
+      debugger;
+      async function getFireBaseDoc() {
+        const myCollection = collection(firestoreDB, "users");
+        const querySnapshot = await getDocs(myCollection);
+        console.log(querySnapshot);
+        querySnapshot.forEach((doc) => {
+          debugger;
+          console.log(`${doc.id} => ${doc.data()}`);
+        });
+      }
+      getFireBaseDoc();
+    } catch (error) {
+      console.log(error.message);
+    }
+  });
+
   return (
     <div className="container container-web">
       <div className="card card-web">

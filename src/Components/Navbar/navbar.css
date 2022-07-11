@@ -85,6 +85,11 @@ a {
 
 .userName {
   font-size: 1.15rem;
+  display: flex;
+}
+.userName-icon {
+  margin-top: 5px;
+  margin-right: 10px;
 }
 
 .wrench{

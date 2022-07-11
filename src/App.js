@@ -8,6 +8,7 @@ import Pets from "./Components/Pets/Pets";
 import People from "./Components/People/People";
 import News from "./Components/News/News";
 import Contact from "./Components/Contact/Contact";
+import Perfil from "./Components/Perfil/Perfil";
 import UserSettings from "./Components/ThemeSettings/ThemeSettings";
 import Login from "./Components/Login/Login";
 import Footer from "./Components/Footer/Footer";
@@ -19,21 +20,12 @@ import ThemeContext from "./context/ThemeContext";
 import Background from "./Components/Background/Background";
 
 function App() {
-  // var background = localStorage.getItem("backgroundWeb");
-  debugger;
   return (
     <ThemeProvider>
       <AuthProvider>
         <BrowserRouter>
           <Navbar />
-          {/* <div className={isDarkMode === "true" ? 'container-main container-dark' : 'container-main container-white'}> */}
-          {/* <div
-            className={
-              background !== null
-                ? "container-main container-" + background
-                : "container-main container-white"
-            }
-          > */}
+
           <Background>
             <Routes>
               <Route path="/" element={<Home />} />
@@ -44,6 +36,7 @@ function App() {
               <Route path="/news" element={<News />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/settings" element={<UserSettings />} />
+              <Route path="/perfil" element={<Perfil />} />
             </Routes>
           </Background>
           {/* </div> */}

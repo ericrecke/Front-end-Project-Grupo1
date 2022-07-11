@@ -4,7 +4,6 @@ import "./Background.css";
 
 const Background = (props) => {
   const { background } = React.useContext(ThemeContext);
-  debugger;
   const { children } = props;
   return (
     <div
