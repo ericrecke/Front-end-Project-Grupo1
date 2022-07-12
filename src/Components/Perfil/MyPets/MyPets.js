@@ -19,6 +19,7 @@ var PetJson = {
   type: "dog",
   name: "",
   surName: "",
+  description: "",
   age: 0,
   owner: "",
   images: [],
@@ -27,6 +28,7 @@ const MyPets = (props) => {
   const { petUser, setPetUser, docUser } = props;
   const [petSelected, setPetSelected] = useState(undefined);
   const [petToSend, setpetToSend] = useState(undefined);
+
   const openPet = async (e) => {
     e.preventDefault();
     const { textContent } = e.target;
@@ -174,6 +176,8 @@ const PetModal = (props) => {
       setPetAdd({ ...petAdd, surName: getValue });
     } else if (objTarget.name === "petAge") {
       setPetAdd({ ...petAdd, age: getValue });
+    } else if (objTarget.name === "petDescription") {
+      setPetAdd({ ...petAdd, description: getValue });
     }
   };
 
@@ -248,6 +252,14 @@ const PetModal = (props) => {
             value={petAdd.surName}
             placeholder={"Apellido o Hogar"}
             required
+          />
+          <label>Descripción</label>
+          <textarea
+            name="petDescription"
+            className="form-control"
+            onChange={onChangePet}
+            value={petAdd.description}
+            placeholder={"Descripción de la mascota..."}
           />
           <label>Edad</label>
           <input

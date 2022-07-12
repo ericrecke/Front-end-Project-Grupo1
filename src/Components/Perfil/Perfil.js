@@ -94,6 +94,16 @@ const Perfil = () => {
     }
   }, [user]);
 
+  const onChangePerfil = (e) => {
+    const objTarget = e.target;
+    const getValue = objTarget.value;
+    if (objTarget.name === "perfilName") {
+      setDocUser({ ...docUser, name: getValue });
+    } else if (objTarget.name === "perfilEmail") {
+      setDocUser({ ...docUser, id: getValue });
+    }
+  };
+
   const saveForm = async (e) => {
     e.preventDefault();
     setIsSaving(true);
@@ -145,7 +155,8 @@ const Perfil = () => {
     }
   };
 
-  if (user !== undefined && user !== null) {
+  if (docUser !== undefined && docUser !== null) {
+    debugger
     return (
       <div className={"container container-web"}>
         <div className="card card-web">
@@ -172,10 +183,11 @@ const Perfil = () => {
                       <input
                         type="string"
                         className="form-control"
-                        placeholder={_language.LOGIN.INPUT_PLACEHOLDER_NAME}
+                        placeholder={_language.PERFIL.INPUT_PLACEHOLDER_NAME}
                         required
-                        value={user.displayName}
-                        disabled={user.displayName !== undefined ? true : false}
+                        onChange={onChangePerfil}
+                        value={docUser.name}
+                        disabled={docUser.name !== null ? true : false}
                       />
                       <label htmlFor="email">
                         {_language.PERFIL.INPUT_EMAIL}
@@ -185,7 +197,7 @@ const Perfil = () => {
                         className="form-control"
                         placeholder={_language.PERFIL.INPUT_PLACEHOLDER_EMAIL}
                         required
-                        value={user.email}
+                        value={docUser.id}
                         disabled
                       />
                       <label htmlFor="select">{_language.PERFIL.PETS}</label>

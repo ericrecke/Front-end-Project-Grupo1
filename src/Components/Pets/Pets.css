@@ -1,4 +1,14 @@
 .img-slider {
-    width: 100% !important;
-    height: 50vmin;
+  height: 70vmin;
+  size: 120%;
+}
+.img-show {
+  background-image: url(https://images-ssl.gotinder.com/u/5E6hf23yHFY5tMVhq1iPUW/wai1MdR68AKNFTin8ddHYz.webp?Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6IiovdS81RTZoZjIzeUhGWTV0TVZocTFpUFVXLyoiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE2NTc5ODQwNDd9fX1dfQ__&Signature=zLlUEojam80i5a2UduZDXTpoWT8MBZPafMj1XY12q9FG7iIfTY2p0soHVt~GQicw3eINpSC9w4aPIjdNUxRtpa5e24cGiQbdttdHyaILQ1Sv470oupku20A2~VhD8TVQ9GDbJmEf3jpP42IyTd7OYE8NCacM7wWXEmPJhKMdyLSpMmFXf619ikXhjDIJ8lm6QhGXjVCA-xUNCXumKfm75hmsSIgANj~I7P-72NIMboXWTFxoZQdzeuV~ug2diJA1etUeaujPhDkM2ZjBAtmwP3FdjsXgoccD9cHflKjUmEPW2QKjkf~M~7no6IXr4WnR5IP8YnSTgr4-SFu1dCSeXQ__&Key-Pair-Id=K368TLDEUPA6OI);
+  background-position: 50% 0%;
+  background-size: 120.755%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  position: absolute;
 }
