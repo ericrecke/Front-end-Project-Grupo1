@@ -37,7 +37,6 @@ const Perfil = () => {
       const myCollection = doc(firestoreDB, "users", user.email);
       const docFound = await getDoc(myCollection);
       if (docFound.exists()) {
-        console.log(docFound.data());
         setDocUser(docFound.data());
         setFbDocument(docFound);
       } else {
@@ -56,7 +55,6 @@ const Perfil = () => {
         }
       }
       // querySnapshot.forEach((doc) => {
-      //   debugger;
       //   let docId = doc.id;
       //   let docData = doc.data();
       //   console.log(docId);
@@ -103,7 +101,6 @@ const Perfil = () => {
     const metadata = {
       contentType: "image/jpeg",
     };
-    debugger;
     if (docUser !== undefined && docUser !== null) {
       if (
         petUser !== undefined &&

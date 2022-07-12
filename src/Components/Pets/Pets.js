@@ -12,18 +12,13 @@ import { collection, getDocs } from "firebase/firestore";
 
 const _language = languages["es"];
 const Pets = () => {
-  debugger;
 
   useEffect(() => {
-    debugger;
     try {
-      debugger;
       async function getFireBaseDoc() {
         const myCollection = collection(firestoreDB, "users");
         const querySnapshot = await getDocs(myCollection);
-        console.log(querySnapshot);
         querySnapshot.forEach((doc) => {
-          debugger;
           console.log(`${doc.id} => ${doc.data()}`);
         });
       }
