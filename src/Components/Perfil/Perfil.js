@@ -156,13 +156,12 @@ const Perfil = () => {
   };
 
   if (docUser !== undefined && docUser !== null) {
-    debugger
     return (
       <div className={"container container-web"}>
         <div className="card card-web">
           <div className="row g-0">
             <div className="col-md-4">
-              <ImgPerfil photoURL={user.photoURL} />
+              <ImgPerfil photoURL={docUser.photo} />
             </div>
             <div className="col-md-8">
               <div className="card-body">
