@@ -2,7 +2,14 @@ import React from "react";
 import { useContext } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./navbar.css";
-import { FaFacebook, FaRegUser, FaInstagram, FaTwitter, FaCat, FaWrench } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaRegUser,
+  FaInstagram,
+  FaTwitter,
+  FaCat,
+  FaWrench,
+} from "react-icons/fa";
 import { AiTwotoneMail } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
@@ -26,7 +33,11 @@ const Navbar = () => {
   };
   return (
     // logo
-    <nav className={`navbar navbar-expand-lg navbar${dark ? "-dark" : "-light"} bg-navbar${dark ? "-dark" : ""}`}>
+    <nav
+      className={`navbar navbar-expand-lg navbar${
+        dark ? "-dark" : "-light"
+      } bg-navbar${dark ? "-dark" : ""}`}
+    >
       <div className="container-fluid">
         <Link to="../" aria-current="page" className="nav-link active">
           <FaCat className="cat" />
@@ -50,21 +61,29 @@ const Navbar = () => {
                 {_language.NAVBAR.NAVBAR_INDEX}
               </Link>
             </li>
+            {user && (
+              <>
+                <li className="nav-item">
+                  <Link
+                    to="/pets"
+                    aria-current="page"
+                    className="nav-link active"
+                  >
+                    {_language.NAVBAR.NAVBAR_PETS}
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    to="/people"
+                    aria-current="page"
+                    className="nav-link active"
+                  >
+                    {_language.NAVBAR.NAVBAR_PEOPLE}
+                  </Link>
+                </li>
+              </>
+            )}
 
-            <li className="nav-item">
-              <Link to="/pets" aria-current="page" className="nav-link active">
-                {_language.NAVBAR.NAVBAR_PETS}
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/people"
-                aria-current="page"
-                className="nav-link active"
-              >
-                {_language.NAVBAR.NAVBAR_PEOPLE}
-              </Link>
-            </li>
             <li className="nav-item">
               <Link to="/news" aria-current="page" className="nav-link active">
                 {_language.NAVBAR.NAVBAR_NEWS}
@@ -85,23 +104,21 @@ const Navbar = () => {
             <ul className="navbar-nav rightSide">
               {/* <Icon className="userName" icon={iosContactOutline}></Icon> */}
               <li className="nav-item userName nav-link active">
-              <Link
-                to="/perfil"
-                aria-current="page"
-                className="nav-link active userName"
-              >
-                <FaRegUser className="userName-icon"/> Perfil
-                {/* <FaRegUser className="userName-icon"/> {user.email} */}
-              </Link>
-                
+                <Link
+                  to="/perfil"
+                  aria-current="page"
+                  className="nav-link active userName"
+                >
+                  <FaRegUser className="userName-icon" /> Perfil
+                  {/* <FaRegUser className="userName-icon"/> {user.email} */}
+                </Link>
               </li>
               <li className="nav-item">
                 <button className="logout" onClick={handleLogout}>
                   Salir
                 </button>
               </li>
-              <li className="nav-item">
-            </li>
+              <li className="nav-item"></li>
             </ul>
           )}
           {!user && (
