@@ -54,7 +54,6 @@ const BackgroundItem = (props) => {
   const { haveImage, source, name } = props;
   const { toggleBackground } = React.useContext(ThemeContext);
   const handleOnClick = (e) => {
-    debugger;
     toggleBackground(e.currentTarget.name);
   };
   return (

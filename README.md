@@ -1,5 +1,8 @@
 # Front-end-Project Grupo 1 Comision 22013 Codo a Codo GO
 
+Url del proyecto:
+https://front-end-project-grupo1.vercel.app/
+
 Temática elegida: Aplicación tipo Tinder para adopción de mascotas.
 
 
@@ -28,3 +31,5 @@ Temática elegida: Aplicación tipo Tinder para adopción de mascotas.
 | ReStructure Components(Perfil-MyPets, pasarlos a variables reutilizables (los datos que se obtienen en firebase para reutilizar en otros componentes))  | Eric Recke  | Pendiente  |
 | Perfil- Add Pet (por ahora guarda 3 imagenes, hacerlo luego dinamico en un array) Component  | Eric Recke  | Pendiente  |
 | Firebase Component Mejoras, falta separarlo en componentes esta en el perfil de components | Eric Recke  | Completado  |
+| Fix names en Github  | Eric Recke  | Completado  |
+| Fix names en Github  | Eric Recke  | Completado  |
