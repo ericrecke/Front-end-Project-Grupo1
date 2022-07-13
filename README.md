@@ -6,7 +6,10 @@ https://front-end-project-grupo1.vercel.app/
 Temática elegida: Aplicación tipo Tinder para adopción de mascotas.
 
 Firestore Utilizado para el sitio web.
-3 Collections: - pets:{
+
+3 Collections:
+
+ - pets:{
 age,
 description,
 id,
@@ -15,13 +18,17 @@ likes,
 name,
 owner,
 surName
-} - users:{
+}
+
+ - users:{
 id,
 id_UserPets,
 name,
 pets,
 photo
-} - users_pets:{
+}
+
+ - users_pets:{
 id,
 match,
 peopleLiked,
