@@ -67,6 +67,10 @@ export const languages = {
     PERFIL: {
       HEADING_PERFIL: "Perfil of (User)",
       INFORMATION_PERFIL: "Information About the User",
+      INPUT_NAME: "Name: ",
+      INPUT_EMAIL: "Email: ",
+      INPUT_PLACEHOLDER_NAME: "Write a Name",
+      INPUT_PLACEHOLDER_EMAIL: "Write a Email",
     },
 
     TOOLS: {
@@ -131,8 +135,12 @@ export const languages = {
     },
 
     PERFIL: {
-      HEADING_PERFIL: "Perfil ",
-      INFORMATION_PERFIL: "Información acerca del usuario",
+      HEADING_PERFIL: "Perfil of (User)",
+      INFORMATION_PERFIL: "Information About the User",
+      INPUT_NAME: "Nombre: ",
+      INPUT_EMAIL: "Email: ",
+      INPUT_PLACEHOLDER_NAME: "Ingresar un Nombre",
+      INPUT_PLACEHOLDER_EMAIL: "Ingresar un Email",
     },
     TOOLS: {
       HEADING: "Configuración del Sitio",

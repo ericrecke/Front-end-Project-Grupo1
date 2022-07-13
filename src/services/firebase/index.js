@@ -1,5 +1,8 @@
-import firebase, { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { initializeApp } from "firebase/app";
+import {
+  getFirestore,
+  enableMultiTabIndexedDbPersistence,
+} from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import { getAuth } from "firebase/auth";
 
@@ -33,9 +36,13 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-export const auth = getAuth(app);
-export const firestoreDB = getFirestore(app);
-export const firestorage = getStorage(app);
+const auth = getAuth(app);
+const firestoreDB = getFirestore(app);
+const firestorage = getStorage(app);
+
+enableMultiTabIndexedDbPersistence(firestoreDB);
+
+export { auth, firestoreDB, firestorage };
 
 /*
 CONFIGURACIÓN DE ERIC

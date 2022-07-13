@@ -12,7 +12,7 @@ function ForgotPassword(props) {
 
     const handleSubmitForgotPassword = () => {
         
-        console.log("Presionó recuperar contraseña...")
+        // console.log("Presionó recuperar contraseña...")
 
         if (isInvalidEmail(email.value)){
             alert(_language.FORGOT_PASSWORD.NOT_VALID_EMAIL);

@@ -19,6 +19,7 @@ var PetJson = {
   type: "dog",
   name: "",
   surName: "",
+  description: "",
   age: 0,
   owner: "",
   images: [],
@@ -27,6 +28,7 @@ const MyPets = (props) => {
   const { petUser, setPetUser, docUser } = props;
   const [petSelected, setPetSelected] = useState(undefined);
   const [petToSend, setpetToSend] = useState(undefined);
+
   const openPet = async (e) => {
     e.preventDefault();
     const { textContent } = e.target;
@@ -35,10 +37,8 @@ const MyPets = (props) => {
       setpetToSend(petFind);
     }
   };
-  debugger;
 
   useEffect(() => {
-    debugger;
     if (petSelected !== null) setpetToSend(petSelected);
     else setpetToSend(PetJson);
   }, [petSelected]);
@@ -123,11 +123,9 @@ const MyPets = (props) => {
 const MyPetsDashboard = (props) => {
   const { petSelected, setPetSelected, petUser, setPetUser, docUser } = props;
   const sendNewPet = () => {
-    debugger;
     setPetSelected(null);
   };
 
-  debugger;
   return (
     <>
       <div className="buttonsConfirm">
@@ -148,11 +146,9 @@ const MyPetsDashboard = (props) => {
 
 const PetModal = (props) => {
   const { pet, petUser, setPetUser, docUser } = props;
-  debugger;
   const [petAdd, setPetAdd] = React.useState(PetJson);
   const [petImgs, setPetImgs] = useState([]);
   useEffect(() => {
-    debugger;
     if (pet !== undefined && pet !== null) {
       setPetAdd(pet);
       setPetImgs(pet.images);
@@ -163,7 +159,6 @@ const PetModal = (props) => {
   }, [pet]);
 
   useEffect(() => {
-    debugger;
     setPetAdd({
       ...petAdd,
       images: petImgs,
@@ -181,11 +176,12 @@ const PetModal = (props) => {
       setPetAdd({ ...petAdd, surName: getValue });
     } else if (objTarget.name === "petAge") {
       setPetAdd({ ...petAdd, age: getValue });
+    } else if (objTarget.name === "petDescription") {
+      setPetAdd({ ...petAdd, description: getValue });
     }
   };
 
   const savePet = async (e) => {
-    debugger;
     e.preventDefault();
     petAdd.owner = docUser.id;
     if (petUser === undefined || petUser === null) {
@@ -200,17 +196,14 @@ const PetModal = (props) => {
       // setPetUser({ ...petUser, petUser: arrayPets });
       setPetUser((oldPets) => [...oldPets, petAdd]);
     }
-    console.log(petAdd);
   };
 
   const deletePet = async (e) => {
-    debugger;
     e.preventDefault();
     if (petUser === undefined || petUser === null) {
       setPetUser((oldPets) => oldPets.filter((data) => data.id === petAdd.id));
       // previousEmployeeData => previousEmployeeData.filter(data)=> data.id != employeeId )
     }
-    console.log(petAdd);
   };
 
   return (
@@ -259,6 +252,14 @@ const PetModal = (props) => {
             value={petAdd.surName}
             placeholder={"Apellido o Hogar"}
             required
+          />
+          <label>Descripción</label>
+          <textarea
+            name="petDescription"
+            className="form-control"
+            onChange={onChangePet}
+            value={petAdd.description}
+            placeholder={"Descripción de la mascota..."}
           />
           <label>Edad</label>
           <input
@@ -332,7 +333,6 @@ function findArrayElementByName(array, name) {
 
 const ImgUpload = (props) => {
   const { src, isArray } = props;
-  debugger;
   if (src !== undefined && src !== null) {
     return (
       <>
@@ -378,7 +378,6 @@ const UploadImage_Response = (props) => {
 
   const onDrop = useCallback(
     (acceptedFiles) => {
-      debugger;
       const file = acceptedFiles[0];
       var fileTosave = {
         // file: file,
@@ -399,7 +398,6 @@ const UploadImage_Response = (props) => {
     noKeyboard: true,
     onDrop,
   });
-  debugger;
   if (arrayResult && imageUpload.length > 0) {
     return (
       <>
