@@ -11,7 +11,7 @@ const Contact = () => {
         <div className="card-body">
             <h5 className="card-title card-title-web">Contacto</h5>
             <p className="card-text card-text-web">
-              contacto en desarrollo
+             <h5>Contacto en desarrollo por Daniel de Acha</h5> 
             </p>
             </div>
       </div>

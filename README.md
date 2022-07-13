@@ -58,7 +58,7 @@ petsUnliked,
 | Pets Component                                                                                                                                         | Eric Recke           | Completado |
 | People Component                                                                                                                                       | --                   | Pendiente  |
 | News Component                                                                                                                                         | --                   | Pendiente  |
-| Contact Component                                                                                                                                      | --                   | Pendiente  |
+| Contact Component                                                                                                                                      | Daniel de Acha                | En desarrollo  |
 | ReStructure Components(Perfil-MyPets, pasarlos a variables reutilizables (los datos que se obtienen en firebase para reutilizar en otros componentes)) | Eric Recke           | Pendiente  |
 | Perfil- Add Pet (por ahora guarda 3 imagenes, hacerlo luego dinamico en un array) Component                                                            | Eric Recke           | Completado |
 | Firebase Component Mejoras, falta separarlo en componentes esta en el perfil de components                                                             | Eric Recke           | Completado |
