@@ -23,7 +23,7 @@ const Pets = () => {
   const _language = languages["es"];
   const { user } = useAuth();
   const [docUser, setDocUser] = useState(null);
-  const [fbDocument, setFbDocument] = useState(null);
+  const [petUser, setPetUser] = useState(null);
   const [petsList, setPetsList] = useState([]);
 
   async function querySnapshot() {
@@ -31,25 +31,51 @@ const Pets = () => {
       const myCollection = doc(firestoreDB, "users", user.email);
       const docFound = await getDoc(myCollection);
       if (docFound.exists()) {
-        setDocUser(docFound.data());
-        setFbDocument(docFound);
-      } else {
-        try {
-          const docRef = await setDoc(doc(firestoreDB, "users", user.email), {
-            id: user.email,
-            name: user.displayName,
-            photo: user.photoURL,
-            pets: [],
-          });
-          setDocUser(docRef.data());
-          console.log("Document written with ID: ", docRef.id);
-          setFbDocument(docRef);
-        } catch (e) {
-          console.error("Error adding document: ", e);
+        const personInfo = docFound.data();
+        setDocUser(personInfo);
+        const relationFound = await getDoc(
+          doc(firestoreDB, "users_pets", personInfo.id_UserPets)
+        );
+        if (relationFound.exists()) {
+          setPetUser(relationFound.data());
         }
       }
     }
   }
+
+  // pet, docUser, petUser, liked
+  const petButton = (liked) => async () => {
+    debugger;
+    try {
+      let petInstance = petsList[0];
+      if (liked) {
+        petInstance.likes.push(docUser.id);
+        await setDoc(doc(firestoreDB, "pets", petInstance.id), petInstance);
+        let petsUnliked = petUser.petsUnliked;
+        petsUnliked.push(petInstance.id);
+        setPetUser({ ...petUser, petsUnliked: petsUnliked });
+      } else {
+        let petsLiked = petUser.petsLiked;
+        petsLiked.push(petInstance.id);
+        setPetUser({ ...petUser, petsLiked: petsLiked });
+      }
+    } catch (e) {
+      console.error("Error: ", e);
+    }
+  };
+
+  useEffect(() => {
+    debugger;
+    async function fetchData() {
+      if (petUser !== null && petUser !== undefined) {
+        await setDoc(
+          doc(firestoreDB, "users_pets", docUser.id_UserPets),
+          petUser
+        );
+      }
+    }
+    fetchData();
+  }, [petUser]);
 
   useEffect(() => {
     async function fetchData() {
@@ -102,7 +128,7 @@ const Pets = () => {
     <div className="container container-web">
       <div className="card card-web">
         <div className="card-body">
-          <PetInformation petsList={petsList} />
+          <PetInformation petsList={petsList} petButton={petButton} />
         </div>
       </div>
     </div>
@@ -110,15 +136,15 @@ const Pets = () => {
 };
 
 const PetInformation = (props) => {
-  const { petsList } = props;
+  const { petsList, petButton } = props;
   if (petsList !== undefined && petsList !== null && petsList.length > 0) {
     return (
       <>
-        <h5 className="card-title card-title-web">
+        <h5 className="card-title card-title-web text-center">
           {petsList[0].name} {petsList[0].surName}
         </h5>
-        <p className="card-text card-text-web">{petsList[0].description}</p>
-
+        Edad: {petsList[0].age}
+        <p className="card-text card-text-web"> {petsList[0].description}</p>
         <Carousel fade>
           {petsList[0].images.map((image) => (
             <Carousel.Item key={image.name}>
@@ -128,7 +154,7 @@ const PetInformation = (props) => {
                 alt={image.name}
               ></img>
               <Carousel.Caption>
-                <ButtonGroup />
+                <ButtonGroup pet={petsList[0].id} petButton={petButton} />
               </Carousel.Caption>
             </Carousel.Item>
           ))}
@@ -150,13 +176,22 @@ const PetInformation = (props) => {
   );
 };
 
-const ButtonGroup = () => {
+const ButtonGroup = (props) => {
+  const { pet, petButton } = props;
   return (
     <div className="btn-group" role="group" aria-label="Listado Botones">
-      <button type="button" className="btn btn-danger">
+      <button
+        type="button"
+        className="btn btn-danger"
+        onClick={petButton(true)}
+      >
         <FaRegTimesCircle />
       </button>
-      <button type="button" className="btn btn-success mr-5">
+      <button
+        type="button"
+        className="btn btn-success mr-5"
+        onClick={petButton(false)}
+      >
         <FaRegHeart />
       </button>
     </div>

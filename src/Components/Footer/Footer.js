@@ -13,28 +13,30 @@ const Footer = () => {
   return (
     <footer className={`bg-footer${dark ? "-dark" : ""}`}>
       {/* Redes sociales  */}
-      <ul id="redes">
-        <li>
-          <a className="navbar-brand" href="#">
-            <FaFacebook className="face" />
-          </a>
-        </li>
-        <li>
-          <a className="navbar-brand" href="#">
-            <FaInstagram className="insta" />
-          </a>
-        </li>
-        <li>
-          <a className="navbar-brand" href="#">
-            <FaTwitter className="twitter" />
-          </a>
-        </li>
-        <li>
-          <a className="navbar-brand" href="#">
-            <AiTwotoneMail className="mail" />
-          </a>
-        </li>
-      </ul>
+      <div className="row">
+        <ul id="redes">
+          <li>
+            <a className="navbar-brand" href="#">
+              <FaFacebook className="face" />
+            </a>
+          </li>
+          <li>
+            <a className="navbar-brand" href="#">
+              <FaInstagram className="insta" />
+            </a>
+          </li>
+          <li>
+            <a className="navbar-brand" href="#">
+              <FaTwitter className="twitter" />
+            </a>
+          </li>
+          <li>
+            <a className="navbar-brand" href="#">
+              <AiTwotoneMail className="mail" />
+            </a>
+          </li>
+        </ul>
+      </div>
     </footer>
   );
 };
