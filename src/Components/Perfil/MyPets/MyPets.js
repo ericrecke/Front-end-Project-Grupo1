@@ -23,6 +23,7 @@ var PetJson = {
   age: 0,
   owner: "",
   images: [],
+  likes: [],
 };
 const MyPets = (props) => {
   const { petUser, setPetUser, docUser } = props;

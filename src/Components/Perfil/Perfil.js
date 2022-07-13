@@ -27,7 +27,7 @@ const Perfil = () => {
   const _language = languages[lang];
   const { user } = useAuth();
   const [docUser, setDocUser] = useState(null);
-  const [fbDocument, setFbDocument] = useState(null);
+  // const [fbDocument, setFbDocument] = useState(null);
   const [petUser, setPetUser] = useState([]);
   const [isSaving, setIsSaving] = useState(false);
   const [saveResult, setSaveResult] = useState(undefined);
@@ -38,28 +38,37 @@ const Perfil = () => {
       const docFound = await getDoc(myCollection);
       if (docFound.exists()) {
         setDocUser(docFound.data());
-        setFbDocument(docFound);
+        // setFbDocument(docFound);
       } else {
         try {
-          const docRef = await setDoc(doc(firestoreDB, "users", user.email), {
+          debugger;
+          const newUser_Pets = {
+            id: user.email,
+            petsLiked: [],
+            petsUnliked: [],
+            peopleLiked: [],
+            peopleUnliked: [],
+            match: [],
+          };
+          const user_Pets = await addDoc(
+            collection(firestoreDB, "users_pets"),
+            newUser_Pets
+          );
+          const docRef = {
             id: user.email,
             name: user.displayName,
             photo: user.photoURL,
             pets: [],
-          });
-          setDocUser(docRef.data());
+            id_UserPets: user_Pets.id,
+          };
+          await setDoc(doc(firestoreDB, "users", user.email), docRef);
+          setDocUser(docRef);
           console.log("Document written with ID: ", docRef.id);
-          setFbDocument(docRef);
+          // setFbDocument(docRef);
         } catch (e) {
           console.error("Error adding document: ", e);
         }
       }
-      // querySnapshot.forEach((doc) => {
-      //   let docId = doc.id;
-      //   let docData = doc.data();
-      //   console.log(docId);
-      //   console.log(docData);
-      // });
     }
   }
 
@@ -169,6 +178,7 @@ const Perfil = () => {
                   <form
                     autoComplete="off"
                     className="form-group container-perfil__text"
+                    encType="multipart/form-data"
                   >
                     <Alerts isSaving={isSaving} saveResult={saveResult} />
                     <fieldset>
