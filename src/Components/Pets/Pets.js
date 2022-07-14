@@ -6,6 +6,7 @@ import { ThemeSwitch } from "../ThemeSettings/ThemeSwitch/ThemeSwitch";
 import { languages } from "../../language";
 import dog_One from "../../assets/images/dog_1.jpg";
 import dog_Two from "../../assets/images/dog_2.jpg";
+import NoPetFile from "../../assets/images/bgnoFile.png";
 
 import firebase, { firestoreDB } from "../../services/firebase";
 import {
@@ -45,27 +46,31 @@ const Pets = () => {
 
   // pet, docUser, petUser, liked
   const petButton = (liked) => async () => {
-    debugger;
     try {
+      debugger;
       let petInstance = petsList[0];
-      if (liked) {
-        petInstance.likes.push(docUser.id);
-        await setDoc(doc(firestoreDB, "pets", petInstance.id), petInstance);
+      if (!liked) {
         let petsUnliked = petUser.petsUnliked;
         petsUnliked.push(petInstance.id);
         setPetUser({ ...petUser, petsUnliked: petsUnliked });
       } else {
+        petInstance.likes.push(docUser.id);
+        await setDoc(doc(firestoreDB, "pets", petInstance.id), petInstance);
         let petsLiked = petUser.petsLiked;
         petsLiked.push(petInstance.id);
         setPetUser({ ...petUser, petsLiked: petsLiked });
       }
+      setPetsList({
+        petsList: petsList.filter((petRemove) => {
+          return petRemove.id === petInstance.id;
+        }),
+      });
     } catch (e) {
       console.error("Error: ", e);
     }
   };
 
   useEffect(() => {
-    debugger;
     async function fetchData() {
       if (petUser !== null && petUser !== undefined) {
         await setDoc(
@@ -92,7 +97,7 @@ const Pets = () => {
 
   useEffect(() => {
     async function fetchData() {
-      if (docUser !== null) {
+      if (petUser !== null) {
         try {
           await FuncGetPets();
         } catch (error) {
@@ -101,20 +106,26 @@ const Pets = () => {
       }
     }
     fetchData();
-  }, [docUser]);
+  }, [petUser]);
 
   async function FuncGetPets() {
     try {
       async function getFireBaseDoc() {
         const myCollection = collection(firestoreDB, "pets");
         let getPets = await getDocs(myCollection);
-        // .filter((pet) => pet.owner === docUser.id);
-        getPets.forEach((doc) => {
-          let petData = doc.data();
-          if (petData.owner !== docUser.id) {
+        getPets.forEach((e) => {
+          debugger;
+          let petData = e.data();
+          let filtPet = petData.likes.some((x) => x === docUser.id);
+          let filtUserLike = petUser.petsLiked.some((x) => x === e.id);
+          let filtUserDislike = petUser.petsUnliked.some((x) => x === e.id);
+          if (
+            petData.owner !== docUser.id &&
+            !filtPet &&
+            !filtUserLike &&
+            !filtUserDislike
+          ) {
             setPetsList((oldPets) => [...oldPets, petData]);
-            console.log(`${doc.id} => ${doc.data()}`);
-            console.log(doc.data());
           }
         });
       }
@@ -145,20 +156,7 @@ const PetInformation = (props) => {
         </h5>
         Edad: {petsList[0].age}
         <p className="card-text card-text-web"> {petsList[0].description}</p>
-        <Carousel fade>
-          {petsList[0].images.map((image) => (
-            <Carousel.Item key={image.name}>
-              <img
-                className="d-block img-fluid w-100 img-slider"
-                src={image.preview}
-                alt={image.name}
-              ></img>
-              <Carousel.Caption>
-                <ButtonGroup pet={petsList[0].id} petButton={petButton} />
-              </Carousel.Caption>
-            </Carousel.Item>
-          ))}
-        </Carousel>
+        <PetsItem petsList={petsList} petButton={petButton} />
       </>
     );
   }
@@ -176,21 +174,61 @@ const PetInformation = (props) => {
   );
 };
 
+const PetsItem = (props) => {
+  const { petsList, petButton } = props;
+  if (petsList[0].images.length === 0) {
+    return (
+      <>
+        <Carousel fade>
+          <Carousel.Item>
+            <img
+              className="d-block img-fluid w-100 img-slider"
+              src={NoPetFile}
+              alt={"noimg"}
+            ></img>
+            <Carousel.Caption>
+              <ButtonGroup pet={petsList[0].id} petButton={petButton} />
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
+      </>
+    );
+  }
+  return (
+    <>
+      <Carousel fade>
+        {petsList[0].images.map((image) => (
+          <Carousel.Item key={image.name}>
+            <img
+              className="d-block img-fluid w-100 img-slider"
+              src={image.preview}
+              alt={image.name}
+            ></img>
+            <Carousel.Caption>
+              <ButtonGroup petButton={petButton} />
+            </Carousel.Caption>
+          </Carousel.Item>
+        ))}
+      </Carousel>
+    </>
+  );
+};
+
 const ButtonGroup = (props) => {
-  const { pet, petButton } = props;
+  const { petButton } = props;
   return (
     <div className="btn-group" role="group" aria-label="Listado Botones">
       <button
         type="button"
         className="btn btn-danger"
-        onClick={petButton(true)}
+        onClick={petButton(false)}
       >
         <FaRegTimesCircle />
       </button>
       <button
         type="button"
         className="btn btn-success mr-5"
-        onClick={petButton(false)}
+        onClick={petButton(true)}
       >
         <FaRegHeart />
       </button>
