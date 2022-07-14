@@ -56,10 +56,11 @@ const Perfil = () => {
           );
           const docRef = {
             id: user.email,
+            id_UserPets: user_Pets.id,
             name: user.displayName,
             photo: user.photoURL,
             pets: [],
-            id_UserPets: user_Pets.id,
+            liked: [],
           };
           await setDoc(doc(firestoreDB, "users", user.email), docRef);
           setDocUser(docRef);
@@ -80,14 +81,11 @@ const Perfil = () => {
       docUser.pets !== null &&
       docUser.pets.some((p) => p !== null || p !== undefined)
     ) {
-      // let arrayPets = docUser.pets;
       docUser.pets.map(async (item) => {
         let collPetsUser = doc(firestoreDB, "pets", item);
         const petFound = await getDoc(collPetsUser);
         if (petFound.exists()) {
-          // arrayPets.push(petFound.data());
           setPetUser((oldPets) => [...oldPets, petFound.data()]);
-          // petUser.push(petFound.data());
         } else {
           console.log("Pet not founded with Id: ", petFound.id);
         }

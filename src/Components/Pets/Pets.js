@@ -51,15 +51,16 @@ const Pets = () => {
       let petInstance = petsList[0];
       if (!liked) {
         let petsUnliked = petUser.petsUnliked;
-        petsUnliked.push(petInstance.id);
+        petsUnliked.push({ id_Pet: petInstance.id, owner: petInstance.owner });
         setPetUser({ ...petUser, petsUnliked: petsUnliked });
       } else {
         petInstance.likes.push(docUser.id);
         await setDoc(doc(firestoreDB, "pets", petInstance.id), petInstance);
         let petsLiked = petUser.petsLiked;
-        petsLiked.push(petInstance.id);
+        petsLiked.push({ id_Pet: petInstance.id, owner: petInstance.owner });
         setPetUser({ ...petUser, petsLiked: petsLiked });
       }
+      debugger;
       setPetsList({
         petsList: petsList.filter((petRemove) => {
           return petRemove.id === petInstance.id;
